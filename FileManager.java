@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager {
-    File file = new File("purchases.txt");
+    File file = new File("./purchases.txt");
 
     public FileManager() {
         super();
         try {
-            this.file.createNewFile();
+            boolean createdNew = this.file.createNewFile();
+            if (!createdNew) {
+                System.out.println("The file already exists.");
+            }
         } catch (IOException e) {
             System.out.println("Cannot create the file: " + this.file.getPath());
         }
